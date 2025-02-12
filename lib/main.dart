@@ -27,35 +27,102 @@ class MyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      color: Colors.white,
-      height: 300,
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(24, 32, 24, 32),
-        children: const <Widget>[
-          Text('Bread and Dairy',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-              )
+    return ListView(
+        padding: const EdgeInsets.all(8),
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(20),
+              color: Colors.yellowAccent[100],
+              alignment: Alignment.center,
+            child: Text('Bread and Dairy',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
           ),
-          Text('Desserts',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-              )
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.yellowAccent[200],
+            alignment: Alignment.center,
+            child: Text('Desserts',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
           ),
-          Text('Home Care',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-              )
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.red[100],
+            alignment: Alignment.center,
+            child: Text('Fresh Fruits',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
           ),
-          Text('Snacks and Beverages',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-              )
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.red[200],
+            alignment: Alignment.center,
+            child: Text('Snacks',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
           ),
-          Text('Per Care',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-              )
-          )
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.blue[100],
+            alignment: Alignment.center,
+            child: Text('Beverages',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.blue[200],
+            alignment: Alignment.center,
+            child: Text('Desserts',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.orange[100],
+            alignment: Alignment.center,
+            child: Text('Instant Foods',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.orange[200],
+            alignment: Alignment.center,
+            child: Text('Home Care',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.purple[100],
+            alignment: Alignment.center,
+            child: Text('Personal Care',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            color: Colors.purple[200],
+            alignment: Alignment.center,
+            child: Text('Pet Care',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                )
+            ),
+          ),
+
         ],
-      ),
+
     );
   }
 }

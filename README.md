@@ -1,46 +1,16 @@
 # Introducing the ListView Widget
 
-In this video and in the videos that follow, we'll explore a very important widget, a widget that you are very likely to use within your flutter app. We'll explore how the ListView is set up. The ListView displays a list of items, and the main thing is the ListView sets up scrolling for you automatically, so you can scroll and view the items in the list which do not fit on the screen. You can think of the ListView as a scrollable list of widgets arranged linearly. ListView is the most commonly used scrolling widget. It displays its children one after the other in the scroll direction that you have specified. Now along the way, as we are exploring the ListView and exploring how we can display items within a ListView, we'll be using a large number of images.
+The ListView displays a list of items, and the main thing is the ListView sets up scrolling for you automatically, so you can scroll and view the items in the list which do not fit on the screen. You can think of the ListView as a scrollable list of widgets arranged linearly. ListView is the most commonly used scrolling widget. It displays its children one after the other in the scroll direction that you have specified.
 
-So, what I've done here is within my Project folder, I have the subfolder images and I have placed a large number of images here in this subfolder. These are images that we'll be using at different points in this demo. Just a heads up that all of the images that we're using in this learning path are royalty free and freely downloadable from pexels.com. All of these images should be available to you as downloadable assets that are part of this course. You don't have to worry about these individual images, you can just place them all in this folder and we'll reference them in our code. Now, the image names are fairly descriptive. I'm going to click on a few of these images so that you can view the contents of these files right here within android studio. Since we're going to be referencing these image assets within our project, I need to ensure that the pubspec.yaml file that I'm using for this project contains the right entry.
+You can see that this reference is a StatelessWidget called MyListView, and MyListView is something that I have defined here in this file. MyListView extends the StatelessWidget base class. It's a widget with no mutable state.
 
-[Video description begins] The pubspec.yaml file opens It has various lines of code. The top of the page, has the following buttons, namely: Pub get, Pub upgrade, Pub outdated, and so on. [Video description ends]
-
-I have the images subfolder specified under the assets section. This is on lines 67 and 68.
-
-[Video description begins] Line 67 reads as: assets:. Line 68 reads as: - images/. [Video description ends]
-
-So, I have things all set up to be able to reference images from this folder. I'm going to click on Pub upgrade to ensure that the images are available and my changes to the pubspec.yaml are reflected in my project. We are now ready to turn our attention to the code where we'll demonstrate how a simple ListView works. Now, the basic structure of this app is straightforward and something that you're familiar with. So, let's directly turn our attention to the body property for our Scaffold on line 18.
-
-[Video description begins] Line 18 reads as: body: const MyListView(),. [Video description ends]
-
-You can see that this reference is a StatelessWidget called MyListView, and MyListView is something that I have defined here in this file. As you can see on line 24, MyListView extends the StatelessWidget base class. It's a widget with no mutable state.
-
-[Video description begins] Line 24 reads as: class MyListView extends StatelessWidget{. [Video description ends]
-
-Let's take a look at the build method where I return the widget tree that makes up this widget. You can see that I have a ListView instantiated on line 30.
-
-[Video description begins] Line 30 reads as: return ListView(. [Video description ends]
-
-This ListView has a children property that I've specified on line 32, here in this editor.
-
-[Video description begins] Line 32 reads as: children: const<Widget> [. [Video description ends]
-
-A ListView can have any number of children and it displays this children by default as a vertical scrolling list. On line 31, I've specified some padding for the ListView, so that it's not flush against the edges of the screen using EdgeInsets.fromLTRB.
-
-[Video description begins] Line 31 reads as: padding: constEdgeInsets.fromLTRB(24, 32,24, 32),. [Video description ends]
-
-This EdgeInsets constructor allows you to specify padding in pixels on the left, top, right, and bottom, that is LTRB. Every child of this ListView is a simple Text element. I have a total of five Text widgets on lines 33, 37, 41, 45, and 49. You can see the first Text element defined on lines 33 through 36.
-
-[Video description begins] Line 33 reads as: Text('Bread and Dairy',. Line 34 reads as: style: TextStyle(. Line 35 reads as: fontSize: 32,. Line 36 reads as: fontWeight: FontWeight.bold)), // TextStyle, Text. [Video description ends]
+A ListView can have any number of children and it displays this children by default as a vertical scrolling list. This EdgeInsets constructor allows you to specify padding in pixels on the left, top, right, and bottom, that is LTRB. Every child of this ListView is a simple Text element. I have a total of five Text widgets.
 
 Its content is Bread and Dairy and it has a certain TextStyle. It has a fontSize of 32 and a fontWeight of bold, and every other element within this ListView is a Text element with different text but the same style. I'm going to go ahead and run this code so that we can view this list of Text widgets within our app. And here is what the list looks like. Now, this looks like a very simple list. This is something you could have achieved with a column widget. I'm going to try and scroll on this list and you'll find that, well, it doesn't scroll. Well, that's because we don't have enough elements to overflow the screen. The ListView is within the body of the scaffold and that takes up the entire dimensions of the screen. I'm now going to wrap this ListView within a container with a fixed height.
 
-So, I right-click on the ListView, Show Context Actions Wrap with widget. So, I'm going to Wrap with the Container widget. Now, a Container will also fill up the screen space of the scaffold unless you explicitly set its height and width. I've set the height of the container to be 150 along with a little bit of padding.
+So, I right-click on the ListView, Show Context Actions Wrap with widget. So, I'm going to Wrap with the Container widget. Now, a Container will also fill up the screen space of the scaffold unless you explicitly set its height and width. I've set the height of the container to be 150 along with a little bit of padding. Once the app reloads, the entire list cannot be seen. You'll have to scroll to see the remaining items. We have a small container within which the list is embedded, so you can see that scrolling just works for a ListView. You didn't have to do anything special to get it to work.
 
-[Video description begins] Line 31 reads as: padding: constEdgeInsets.all(8),. Line 32 reads as: height: 150,. [Video description ends]
-
-Once the app reloads, the entire list cannot be seen. You'll have to scroll to see the remaining items. We have a small container within which the list is embedded, so you can see that scrolling just works for a ListView. You didn't have to do anything special to get it to work. I'm now going to update the code that I have here on screen to improve the look and feel of this ListView. I want a list of text elements, but I want them to be displayed within colored boxes.
+I'm now going to update the code that I have here on screen to improve the look and feel of this ListView. I want a list of text elements, but I want them to be displayed within colored boxes.
 
 I'm going to get rid of this const property for the ListView because I do not have a const constructor. The main change I have made is to the code within the MyListView widget. So, let's take a look at the build method. I still return a ListView from the build method. You can see that on line 30, the children of the ListView are what's different. Let's take a look at the first child, defined on lines 33 through 41, and that'll give you the structure of the remaining children as well. This is a Container widget.
 
