@@ -14,56 +14,11 @@ I'm now going to update the code that I have here on screen to improve the look 
 
 I've set the container background to be a certain color. Alignment.center will center the child of the container, which is a Text object with the text Breakfast and Dairy. Every list item here is a container with a certain background color and some embedded text representing different shopping categories. I'm going to run this app and you can see the contents of our list. Again, the list does not overflow the screen, so there will be no scroll available. 
 
-Now, I'm going to set up a helper method that will allow me to create a container element that will be part of a list. This will allow me to create as many containers as I want for the different shopping categories. I'm going to primarily change the code in the MyListView StatelessWidget. So, I'm going to get rid of my current MyListView and I'm going to add an import statement for the dart:math library. I'll be using that library for random color generation. I'm going to paste in the code for the new ListView
+Now, I'm going to set up a helper method that will allow me to create a container element that will be part of a list. This will allow me to create as many containers as I want for the different shopping categories. I'm going to primarily change the code in the MyListView StatelessWidget. So, I'm going to get rid of my current MyListView and I'm going to add an import statement for the dart:math library. I'll be using that library for random color generation. I'm going to paste in the code for the new ListView that allows us to create as many containers as we want to be elements in our list.
 
-[Video description begins] Line 2 reads as: import 'dart:math';. [Video description ends]
+These items are categories that I want to be elements in the list that I create. These items are used as stand-in for shopping categories in my Insta store app. I've defined the createContainers method, which just takes in a list of strings and creates container elements to display those strings with different colored backgrounds.
 
-that allows us to create as many containers as we want to be elements in our list.
-
-Here is the MyListView StatelessWidget defined on line 25
-
-[Video description begins] Line 25 reads as: class MyListView extends StatelessWidget{. Line 27 reads as: const MyListView({Key? key}) : super(key: key);. Line 29 reads as: @override. Line 30 reads as: Widget build(BuildContext context) {. [Video description ends]
-
-within the build method on lines 31 through 43, I've defined a list of items.
-
-[Video description begins] Line 31 reads as: var items = [. Line 32 reads as: "Breakfast",. Line 33 reads as: "Dairy",. Line 34 reads as: "Vegetables",. Line 35 reads as: "Fruits",. Line 36 reads as: "Snacks",. Line 37 reads as: "Bread",. Line 38 reads as: "Desserts",. Line 39 reads as: "Home Care",. Line 40 reads as: "Personal Care",. Line 41 reads as: "Pet Care",. Line 42 reads as: "Kitchen",. Line 43 reads as: ];. [Video description ends]
-
-These items are categories that I want to be elements in the list that I create. These items are used as stand-in for shopping categories in my Insta store app. Now, I'm going to scroll down a little further and on line 45, you see that I create containers using this list of items as elements. On line 45, I have a list called containers which is just a list of widgets that will make up the elements of my ListView.
-
-[Video description begins] Line 45 reads as: List<Widget> containers =[];.
-[Video description ends]
-
-I then use containers.addAll on lines 46, 47, and 48 to add the widgets that I create using the createContainers method.
-
-[Video description begins] Line 46 reads as: containers.addAll(createContainers(items));. Line 47 reads as: containers.addAll(createContainers(items));. Line 48 reads as: containers.addAll(createContainers(items));. [Video description ends]
-
-I've defined the createContainers method on line 57, which just takes in a list of strings and creates container elements to display those strings with different colored backgrounds.
-
-We'll look at that in a bit.
-
-[Video description begins] Line 57 reads as: List<Widget> createContainers(List<String> items){. [Video description ends]
-
-On lines 50 through 53, I instantiate a ListView widget and I set the children of the ListView widget to the containers that I have created and populated.
-
-[Video description begins] Line 50 reads as: return ListView(. Line 51 reads as: padding: constEdgeInsets.all(8),. Line 52 reads as: children: containers,. Line 53 reads as: ); // ListView. [Video description ends]
-
-The createContainers helper method allows me to eliminate the boilerplate code that I had for the different elements of the list. I'll just define the code once and I can create multiple list elements with that code. Now, let's take a look at this createContainers helper method. On line 59, I have a Random number generator
-
-[Video description begins] Line 59 reads as: Random random = Random();. [Video description ends]
-
-and on line 60, I have a list of container widgets.
-
-[Video description begins] Line 60 reads as: List<Widget> Containers =[];. [Video description ends]
-
-I run a for loop through every string item passed in. This is on line 62, and for each string in the input list,
-
-[Video description begins] Line 62 reads as: for(var item in items){. [Video description ends]
-
-I instantiate a Container widget. The code for this is on line 63 through 74.
-
-[Video description begins] Line 63 reads as: containers.add(Container(. Line 64 reads as: padding: constEdgeInsets.all(20),. Line 65 reads as: color: Color.fromARGB(random.nextInt(255),. Line 66 reads as: random.nextInt(255),. Line 67 reads as: . random.nextInt(255),. Line 68 reads as: random.nextInt(255)), // Color.fromARGB. Line 69 reads as: alignment: Alignment.center,. Line 70 reads as: child: const Text(item,. Line 71 reads as: style: const TextStyle(. Line 72 reads as: fontSize:18,. Line 73 reads as: fontWeight: FontWeight.bold)), //TextStyle, Text. Line 74 reads as: )); //Container. [Video description ends]
-
-On lines 65 through 68, I generate a random color in order to color the background of the container that I've created. This will allow me to have containers of different colors, it'll looked pretty in our ListView. On lines 70 through 73, I've instantiated the Text widget that displays the string that is part of the list of strings I've passed in. Now, the rest of the code should be familiar to you. I'm going to go ahead and run this app, and since we've populated the list with a large number of containers, you can see them nicely displayed, all with different colors. You can scroll down and see how scrolling works. When a ListView scrolls vertically, the elements of the ListView expand to fill up all of the horizontal space available, and the height of each element in the ListView depends on the content that you've stored in there.
+The createContainers helper method allows me to eliminate the boilerplate code that I had for the different elements of the list. I'll just define the code once and I can create multiple list elements with that code. I've instantiated the Text widget that displays the string that is part of the list of strings I've passed in. Now, the rest of the code should be familiar to you. I'm going to go ahead and run this app, and since we've populated the list with a large number of containers, you can see them nicely displayed, all with different colors. You can scroll down and see how scrolling works. When a ListView scrolls vertically, the elements of the ListView expand to fill up all of the horizontal space available, and the height of each element in the ListView depends on the content that you've stored in there.
 
 Now, with a single property scrollDirection, you can have your ListView scroll horizontally. On line 52, where I instantiate the ListView, I now have the ListView scroll in the horizontal direction. I'll just save and wait for my app to reload
 
