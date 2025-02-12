@@ -27,31 +27,35 @@ class MyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(24, 32, 24, 32),
-
-      children: const <Widget>[
-        Text('Bread and Dairy',
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-            )
-        ),
-        Text('Desserts',
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-            )
-        ),
-        Text('Home Care',
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-            )
-        ),
-        Text('Snacks and Beverages',
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-            )
-        ),
-        Text('Per Care',
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
-            )
-        )
-      ],
+    return Container(
+      padding: const EdgeInsets.all(8),
+      color: Colors.white,
+      height: 300,
+      child: ListView(
+        padding: const EdgeInsets.fromLTRB(24, 32, 24, 32),
+        children: const <Widget>[
+          Text('Bread and Dairy',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
+              )
+          ),
+          Text('Desserts',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
+              )
+          ),
+          Text('Home Care',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
+              )
+          ),
+          Text('Snacks and Beverages',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
+              )
+          ),
+          Text('Per Care',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold
+              )
+          )
+        ],
+      ),
     );
   }
 }
