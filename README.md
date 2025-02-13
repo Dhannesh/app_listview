@@ -28,53 +28,11 @@ For a horizontally scrolling list, you'll find that the width property of the li
 
 The height property has been applied to every element of this list. The width property is totally ignored. The width of every element expands to fill the space available. However, the height property is adhered to. Each element here has a height of 200 pixels.
 
-I'm going to have our list items that is the list elements include an image as well as text. That will definitely improve the look and feel of our ListView. I still have the MyListView class and the body property of my MyStore StatelessWidget is set to MyListView. 
-If you look at the build method, you'll find that it's rather short. Well, that's because we've refactored the code a little bit. The children of the ListView widget are generated using a list of products.
+I'm going to have our list items that is the list elements include an image as well as text. That will definitely improve the look and feel of our ListView. I still have the MyListView class and the body property of my MyStore StatelessWidget is set to MyListView. If you look at the build method, you'll find that it's rather short. Well, that's because we've refactored the code a little bit. The children of the ListView widget are generated using a list of products. We'll look at the exact structure of these objects in just a bit. The List.generate function that I invoke here is used to generate a list of widgets, a single widget representing each product. Every widget is a ListItem and you can see a ListItem instantiated. A ListItem is a custom widget that I have created here in this same file and it takes in a single product as an input argument. So in short, this ListView displays a list of ListItem widgets. Every ListItem is a UI widget used to represent a single product, and a Product is defined by the class. Every Product has an image reference and a subtitle. Now, if you take a look at the inset picture, you'll see what an individual list item has been structured to look like. We have an image, and right under the image, we have the subtitle for that image. The images and the subtitles are both placed within a container with different colored backgrounds. Let's turn our attention to the ListItem code that allows us to structure our list items in this manner. Within the build method. you can see that I set the color property of the Container using the method getRandomColor, which generates a color at random. The child of this container is a centered widget, which then contains a Column.
 
-The products variable referenced on line 34 is a list of product objects. We'll look at the exact structure of these objects in just a bit. The List.generate function that I invoke here is used to generate a list of widgets, a single widget representing each product. Every widget is a ListItem and you can see a ListItem instantiated on line 35 through 37. A ListItem is a custom widget that I have created here in this same file and it takes in a single product as an input argument. So in short, this ListView displays a list of ListItem widgets. Every ListItem is a UI widget used to represent a single product, and a Product is defined by the class that you see on lines 43 through 48. Every Product has an image reference and a subtitle,
+The fit property set to BoxFit.fill causes the image to fill up the entire space of the parent. This may distort the original aspect ratio of the image. The SizedBox adds a little space separator between the image and the subtitle and the Text widget references product. 
 
-[Video description begins] Line 43 reads as: class Product {. Line 44 reads as: final String image;. Line 45 reads as: final String subtitle;. Line 47 reads as: Product({required this.image, required this.subtitle });. Line 38 reads as:}. [Video description ends]
-
-and the subtitle is generally product description or a product name. In short, every product has an image or a subtitle and the products variable initialized and defined on line 50 gives us the list of products that we are about to display using a ListView.
-
-On lines 51 through 60, I've instantiated a number of products that make up this list. Every product is High heels of some kind,
-
-[Video description begins] Line 50 reads as: List<Product> products = [. Line 51 reads as: Product(image: 'images/heels.jpg', subtitle: 'High heels'),. Line 52 reads as: Product(image: 'images/heels1.jpg', subtitle: 'Party heels'),. Line 53 reads as: Product(image: 'images/heels2.jpg', subtitle: 'Stylish heels'),. Line 54 reads as: Product(image: 'images/heels3.jpg', subtitle: 'Red heels'),. Line 55 reads as: Product(image: 'images/heels4.jpg', subtitle: 'Black heels'),. Line 56 reads as: Product(image: 'images/heels5.jpg', subtitle: 'Trendy heels'),. Line 57 reads as: Product(image: 'images/heels6.jpg', subtitle: 'Fashionable heels'),. Line 58 reads as: Product(image: 'images/heels7.jpg', subtitle: 'White heels'),. Line 59 reads as: Product(image: 'images/heels8.jpg', subtitle: 'More trendy heels'),. Line 60 reads as: Product(image: 'images/heels9.jpg', subtitle: 'Laced heels'),. Line 61 reads as: ];. [Video description ends]
-
-and you can see the subtitle actually describes that kind of heels, Black heels, Trendy heels, Party heels, and so on. These are the products that we'll display within a ListView, where every item in the ListView is a StatelessWidget of type ListItem, and ListItem is defined here on line 63.
-
-[Video description begins] Line 63 reads as: class ListItem extends StatelessWidget{. [Video description ends]
-
-Note that the constructor for this ListItem on line 66 takes in a reference to a product object.
-
-[Video description begins] Line 66 reads as: ListItem({required this.product});. [Video description ends]
-
-This is a required input argument. Now, if you take a look at the inset picture, you'll see what an individual list item has been structured to look like. We have an image, and right under the image, we have the subtitle for that image.
-
-And the images and the subtitles are both placed within a container with different colored backgrounds. Let's turn our attention to the ListItem code that allows us to structure our list items in this manner. Within the build method on line 70, we return a Container.
-
-[Video description begins] Line 70 reads as: return Container(. [Video description ends]
-
-On line 72, you can see that I set the color property of the Container using the method getRandomColor, which generates a color at random.
-
-[Video description begins] Line 72 reads as: color: getRandomColor(),. [Video description ends]
-
-The child of this container is a centered widget, which then contains a Column.
-
-[Video description begins] Line 73 reads as: child: Center(. Line 74 reads as: child: Column(. Line 75 reads as: mainAxisAlignment:MainAxisAlignment.spaceEvenly,. Line 76 readsd as: children:[. Line 77 reads as: Image(image: AssetImage(product.image),. Line 78 reads as: width:125,. Line 79 reads as: height:125,. Line 80 reads as: fit:BoxFit.fill), // Image. Line 81 reads as: const SizeBox(. Line 82 reads as: height: 6,. Line 83 reads as: ), // SizedBox. Line 84 reads as: Text(. [Video description ends]
-
-I'm going to scroll a bit so you can see the contents of this Column widget a little more clearly. Every Column widget has three children, the Image on line 77, the SizedBox on line 81, and a Text widget on line 84. So, we reference the image for the product. You can see that I set the image property to AssetImage(product.image) this is on line 77, and the width and the height for every image is set to 125 pixels.
-
-The fit property set to BoxFit.fill causes the image to fill up the entire space of the parent. This may distort the original aspect ratio of the image. The SizedBox on lines 81 through 83 adds a little space separator between the image and the subtitle and the Text widget references product.subtitle, this is on line 85. I'll scroll down further and you can see that the getRandomColor method
-
-[Video description begins] Line 84 reads as: Text(. Line 85 reads as: product.subtitle,. Line 86 reads as: style: const TextStyle(. Line 87 reads as: fontsize: 15,. Line 88 reads as: fontWeight: FontWeight.bold. Line 89 reads as:), // TextStyle. Line 90 reads as:), // Text. [Video description ends]
-
-defined on lines 97 through 102 simply uses the Random object to generate RGB values at random, so that each list item
-
-[Video description begins] Line 97 reads as: Color getRandomColor(){. Line 98 reads as: Random random = Random();. Line 100 reads as: return Color.fromARGB(random.nextInt(255), random.nextInt(255),. Line 101 reads as: random.nextInt(255), random.nextInt(255));. Line 102 reads as:}. [Video description ends]
-
-has a background color that is generated completely at random. Now, that you've understood the code, let's go ahead and run this app, and here is our list of ListItems where every list item has an image and a subtitle. I must say that this looks a lot better than where we started off.
-
+## ListTile Widget
 Now, that you've had some basic experience with the ListView, it's time to introduce you to the ListTile widget. This widget is a part of the Flutter SDK. I've updated the code here. The only change is to the MyListView class, so I'm going to scroll down and show you what I have changed. Just a heads up that this ListView no longer displays a list of products. Instead, I just have the names of some pages that you might have in your app. Observe that the children of the ListView set on line 31 are all ListTile widgets.
 
 [Video description begins] Line 30 reads as: return ListView(. Line 31 reads as: children: const <Widget>[. [Video description ends]
