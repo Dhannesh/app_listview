@@ -37,6 +37,7 @@ class MyListView extends StatelessWidget {
               backgroundImage: AssetImage('images/profile.jpg')
             ),
             title: Text('My Profile', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            subtitle: Text("Edit your profile"),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
@@ -51,6 +52,7 @@ class MyListView extends StatelessWidget {
                 backgroundImage: AssetImage('images/settings.jpg')
             ),
             title: Text('Account settings', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            subtitle: Text("View your past orders"),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
@@ -58,6 +60,7 @@ class MyListView extends StatelessWidget {
                 backgroundImage: AssetImage('images/about.jpg')
             ),
             title: Text('About', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            subtitle: Text("Learn about us"),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
@@ -65,6 +68,7 @@ class MyListView extends StatelessWidget {
                 backgroundImage: AssetImage('images/share.jpg')
             ),
             title: Text('Share', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            subtitle: Text("Like us? Share us!"),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
@@ -72,6 +76,7 @@ class MyListView extends StatelessWidget {
                 backgroundImage: AssetImage('images/contact.jpg')
             ),
             title: Text('Contact Us', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            subtitle: Text("Have a query?"),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
         ]
