@@ -14,11 +14,11 @@ class MyStore extends StatelessWidget {
       title: "Insta Store",
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.pinkAccent,
           title: const Text("Insta Store"),
         ),
         body: const MyListView(),
-        backgroundColor:Colors.pinkAccent,
+        backgroundColor:Colors.lightGreenAccent,
       ),
     );
   }
@@ -29,9 +29,38 @@ class MyListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: List.generate(products.length, (index)=>
-        ListItem(product: products[index])
-      )
+      children: const <Widget> [
+        ListTile(
+          leading: Icon(Icons.man),
+          title: Text('My Profile', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          // trailing: Icon(Icons.keyboard_arrow_right),
+        ),
+        ListTile(
+          leading: Icon(Icons.list),
+          title: Text('Past Orders', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          // trailing: Icon(Icons.keyboard_arrow_right),
+        ),
+        ListTile(
+          leading: Icon(Icons.settings),
+          title: Text('Account settings', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          // trailing: Icon(Icons.keyboard_arrow_right),
+        ),
+        ListTile(
+          leading: Icon(Icons.store_rounded),
+          title: Text('About', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          // trailing: Icon(Icons.keyboard_arrow_right),
+        ),
+        ListTile(
+          leading: Icon(Icons.people),
+          title: Text('Share', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          // trailing: Icon(Icons.keyboard_arrow_right),
+        ),
+        ListTile(
+          leading: Icon(Icons.phone),
+          title: Text('Contact Us', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          // trailing: Icon(Icons.keyboard_arrow_right),
+        ),
+      ],
     );
   }
 }
