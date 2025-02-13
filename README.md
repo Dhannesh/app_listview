@@ -20,21 +20,11 @@ These items are categories that I want to be elements in the list that I create.
 
 The createContainers helper method allows me to eliminate the boilerplate code that I had for the different elements of the list. I'll just define the code once and I can create multiple list elements with that code. I've instantiated the Text widget that displays the string that is part of the list of strings I've passed in. Now, the rest of the code should be familiar to you. I'm going to go ahead and run this app, and since we've populated the list with a large number of containers, you can see them nicely displayed, all with different colors. You can scroll down and see how scrolling works. When a ListView scrolls vertically, the elements of the ListView expand to fill up all of the horizontal space available, and the height of each element in the ListView depends on the content that you've stored in there.
 
-Now, with a single property scrollDirection, you can have your ListView scroll horizontally. On line 52, where I instantiate the ListView, I now have the ListView scroll in the horizontal direction. I'll just save and wait for my app to reload
-
-[Video description begins] Line 52 reads as: scrollDirection: Axis.horizontal,. [Video description ends]
+Now, with a single property scrollDirection, you can have your ListView scroll horizontally. 
 
 and you can see that I have a horizontally scrolling ListView. I'm going to now scroll horizontally and show you the contents. Observe that every ListView element expands to fill up the vertical space in a horizontally scrolled ListView, and the width of each element depends on the size of the content that you have within the ListView. Every element here is of a different width because the length of the text within each element is different. Now, in this horizontally scrolling ListView, I'm going to specify a height and the width for each Container element. The list items that make up the ListView.
 
-On lines 66 and 67, I have width 150, height 200.
-
-[Video description begins] Line 66 reads as: width: 150,. Line 67 reads as: height: 200,. [Video description ends]
-
 For a horizontally scrolling list, you'll find that the width property of the list item applies to the list elements. That is, every element here has a width of 150 pixels, but the height property is entirely ignored. You can see that the height of these elements expand to fill up the entire vertical space. Now, let me just change the scrollDirection of this list. Instead of horizontal, I'm going to set it to vertical. That is the default scrollDirection. On reload take a look at the elements of the list.
 
-[Video description begins] Line 52 reads as: scrollDirection: Axis.vertical,. [Video description ends]
-
 The height property has been applied to every element of this list. The width property is totally ignored. The width of every element expands to fill the space available. However, the height property is adhered to. Each element here has a height of 200 pixels.
-
-## Getting Started
 

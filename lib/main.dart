@@ -38,7 +38,8 @@ class MyListView extends StatelessWidget {
 
     return ListView(
       padding: const EdgeInsets.all(8),
-      scrollDirection: Axis.horizontal,
+      // scrollDirection: Axis.horizontal,
+
       children: containers,
     );
   }
@@ -50,6 +51,7 @@ List<Widget> createContainers(List<String> items) {
   for (var item in items) {
     containers.add(Container(
       padding: const EdgeInsets.all(20),
+      height: 200,
       color: Color.fromARGB(random.nextInt(255), random.nextInt(255), random.nextInt(255), random.nextInt(255)),
   alignment: Alignment.center,
   child:  Text(item,
