@@ -38,6 +38,7 @@ class MyListView extends StatelessWidget {
 
     return ListView(
       padding: const EdgeInsets.all(8),
+      scrollDirection: Axis.horizontal,
       children: containers,
     );
   }
