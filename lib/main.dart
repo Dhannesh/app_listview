@@ -33,32 +33,44 @@ class MyListView extends StatelessWidget {
         context: context,
         tiles: [
           ListTile(
-            leading: Icon(Icons.man),
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('images/profile.jpg')
+            ),
             title: Text('My Profile', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            leading: Icon(Icons.list),
+            leading: CircleAvatar(
+    backgroundImage: AssetImage('images/orders.jpg')
+    ),
             title: Text('Past Orders', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            leading: Icon(Icons.settings),
+            leading: CircleAvatar(
+                backgroundImage: AssetImage('images/settings.jpg')
+            ),
             title: Text('Account settings', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            leading: Icon(Icons.store_rounded),
+            leading: CircleAvatar(
+                backgroundImage: AssetImage('images/about.jpg')
+            ),
             title: Text('About', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            leading: Icon(Icons.people),
+            leading: CircleAvatar(
+                backgroundImage: AssetImage('images/share.jpg')
+            ),
             title: Text('Share', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
           ListTile(
-            leading: Icon(Icons.phone),
+            leading: CircleAvatar(
+                backgroundImage: AssetImage('images/contact.jpg')
+            ),
             title: Text('Contact Us', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
