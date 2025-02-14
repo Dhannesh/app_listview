@@ -50,7 +50,7 @@ class MyStore extends StatelessWidget {
           backgroundColor: Colors.pinkAccent,
           title: const Text("Insta Store"),
         ),
-        body: const MyListView(),
+        body: MyListView(),
         backgroundColor: Colors.lightGreenAccent,
       ),
     );
@@ -58,29 +58,36 @@ class MyStore extends StatelessWidget {
 }
 
 class MyListView extends StatelessWidget {
-  const MyListView({super.key});
+  MyListView({super.key});
+
+  final randomNum = Random();
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: actions.length,
-      itemBuilder: (context, index) {
+      itemCount: 20,
+      itemBuilder: (_, index) {
+        debugPrint(
+            "Building item $index ${Colors.primaries[randomNum.nextInt(Colors.primaries.length)]}");
         return Card(
-          color: Colors.amberAccent,
           elevation: 5.0,
-          margin: const EdgeInsets.all(10),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          child: ListTile(
-            leading: CircleAvatar(
-              backgroundImage: AssetImage(actions[index].image),
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          color: Colors.primaries[randomNum.nextInt(Colors.primaries.length)]
+              [randomNum.nextInt(9) + 100],
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            alignment: Alignment.center,
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage(actions[index % 5].image),
+              ),
+              title: Text(actions[index % 5].title),
+              subtitle: Text(actions[index % 5].subtitle),
+              trailing: const Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                debugPrint("Tapped on ${actions[index % 5]} item $index");
+              },
             ),
-            title: Text(actions[index].title),
-            subtitle: Text(actions[index].subtitle),
-            trailing: const Icon(Icons.keyboard_arrow_right),
-            onTap: () {
-              debugPrint("Tapped on ${actions[index]} option");
-            },
           ),
         );
       },
