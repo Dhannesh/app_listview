@@ -223,3 +223,5 @@ remains the same and I'm going to reload my app. What you now have here is an in
 list. You can see that as you scroll on the list, more items will get added to the bottom, there is
 no end. I can see up to Item 144 right now, but I can go on. This will just keep getting
 incremented.
+
+## Using a Dismissible Widget to Delete List Items
