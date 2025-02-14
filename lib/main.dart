@@ -5,6 +5,39 @@ void main() {
   runApp(const MyStore());
 }
 
+class Action {
+  final String image;
+  final String title;
+  final String subtitle;
+
+  Action({required this.image, required this.title, required this.subtitle});
+
+  @override
+  String toString() {
+    return "$title ($subtitle)";
+  }
+}
+
+List<Action> actions = [
+  Action(
+      image: 'images/profile.jpg',
+      title: 'My Profile',
+      subtitle: 'Edit your profile'),
+  Action(
+      image: 'images/orders.jpg',
+      title: 'Past Orders',
+      subtitle: 'View your past orders'),
+  Action(
+      image: 'images/settings.jpg',
+      title: 'Account settings',
+      subtitle: 'Edit your account settings'),
+  Action(image: 'images/about.jpg', title: 'About', subtitle: 'Learn about us'),
+  Action(
+      image: 'images/share.jpg',
+      title: 'Share',
+      subtitle: 'Like us? Share us!'),
+];
+
 class MyStore extends StatelessWidget {
   const MyStore({super.key});
 
@@ -18,98 +51,39 @@ class MyStore extends StatelessWidget {
           title: const Text("Insta Store"),
         ),
         body: const MyListView(),
-        backgroundColor:Colors.lightGreenAccent,
+        backgroundColor: Colors.lightGreenAccent,
       ),
     );
   }
 }
+
 class MyListView extends StatelessWidget {
   const MyListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: ListTile.divideTiles(
-        context: context,
-        tiles: [
-          ListTile(
+    return ListView.builder(
+      itemCount: actions.length,
+      itemBuilder: (context, index) {
+        return Card(
+          color: Colors.amberAccent,
+          elevation: 5.0,
+          margin: const EdgeInsets.all(10),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          child: ListTile(
             leading: CircleAvatar(
-              backgroundImage: AssetImage('images/profile.jpg')
+              backgroundImage: AssetImage(actions[index].image),
             ),
-            title: Text('My Profile', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            subtitle: Text("Edit your profile"),
-            trailing: Icon(Icons.keyboard_arrow_right),
+            title: Text(actions[index].title),
+            subtitle: Text(actions[index].subtitle),
+            trailing: const Icon(Icons.keyboard_arrow_right),
+            onTap: () {
+              debugPrint("Tapped on ${actions[index]} option");
+            },
           ),
-          ListTile(
-            leading: CircleAvatar(
-    backgroundImage: AssetImage('images/orders.jpg')
-    ),
-            title: Text('Past Orders', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            trailing: Icon(Icons.keyboard_arrow_right),
-          ),
-          ListTile(
-            leading: CircleAvatar(
-                backgroundImage: AssetImage('images/settings.jpg')
-            ),
-            title: Text('Account settings', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            subtitle: Text("View your past orders"),
-            trailing: Icon(Icons.keyboard_arrow_right),
-          ),
-          ListTile(
-            leading: CircleAvatar(
-                backgroundImage: AssetImage('images/about.jpg')
-            ),
-            title: Text('About', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            subtitle: Text("Learn about us"),
-            trailing: Icon(Icons.keyboard_arrow_right),
-          ),
-          ListTile(
-            leading: CircleAvatar(
-                backgroundImage: AssetImage('images/share.jpg')
-            ),
-            title: Text('Share', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            subtitle: Text("Like us? Share us!"),
-            trailing: Icon(Icons.keyboard_arrow_right),
-          ),
-          ListTile(
-            leading: CircleAvatar(
-                backgroundImage: AssetImage('images/contact.jpg')
-            ),
-            title: Text('Contact Us', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            subtitle: Text("Have a query?"),
-            trailing: Icon(Icons.keyboard_arrow_right),
-          ),
-        ]
-      ).toList()
+        );
+      },
     );
   }
 }
-//
-// ListView(
-// children: ListTile.divideTiles(
-// context: context,
-// tiles: [
-// ListTile(
-// title: Text('Horse'),
-// ),
-// ListTile(
-// title: Text('Cow'),
-// ),
-// ListTile(
-// title: Text('Camel'),
-// ),
-// ListTile(
-// title: Text('Sheep'),
-// ),
-// ListTile(
-// title: Text('Goat'),
-// ),
-// ]
-// ).toList(),
-// )
-
-
-
-
-
-
