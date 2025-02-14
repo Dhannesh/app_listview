@@ -210,42 +210,11 @@ special to enable it.
 
 The ListView builder constructor is very useful to build infinitely scrolling lists. Now, I'm going
 to show you how that works. I've updated the code here, but this first ListView that we'll see here
-is not infinitely scrolling. The only changes are within the MyListView class. On line 29, I have
-instantiated the random object.
+is not infinitely scrolling. The only changes are within the MyListView class. I'm going to use this
+to generate random background colors for the cards displayed within MyListView. Within the build
+method, I've used the ListView.builder constructor. I've specified itemCount as 20,
 
-[Video description begins] Line 29 reads as: final randomNum = Random();. [Video description ends]
-
-I'm going to use this to generate random background colors for the cards displayed within
-MyListView. Within the build method, I've used the ListView.builder constructor on line 33.
-
-[Video description begins] Line 33 reads as: urn ListView.builder(. [Video description ends]
-
-I've specified itemCount as 20,
-
-[Video description begins] Line 34 reads as: itemCount: 20. [Video description ends]
-
-and then I've specified a callback for the itemBuilder which takes in the index of the current item
-as an input argument.
-
-[Video description begins] Line 35 reads as: itemBuilder: (_, index){. [Video description ends]
-
-Each item is represented using a Card. On line 39, I set the background color of the card to a
-random value. So, each Card is of a different color.
-
-[Video description begins] Line 39 reads as: color:
-Colors.primaries[randomNum.nextInt(Colors.primaries.length)]. [Video description ends]
-
-Focus your attention on lines 44 through 46.
-
-[Video description begins] Line 44 reads as: child: ListTile(. Line 45 reads as: title: Text('Item$
-index', style: const TextStyle(fontSize: 2. Line 46 reads as:),// ListTile. [Video description ends]
-
-Notice that we have a ListTile embedded within the container within the Card, and the Text for this
-ListTile simply prints out Item and the index of the current item. So, every item in this list will
-simply have the Item, followed by 0, 1, 2 etc. I'm going to reload this application and let's see
-what my list looks like.
-
-You can see I have multiple cards here with different colors. Now, on line 34, I've set the
+You can see I have multiple cards here with different colors. Now, I've set the
 itemCount of this ListView to be 20. So, if you scroll down to the bottom, you'll find that the last
 item in this list is Item 19. It's this item count that has restricted this list to have a finite
 number of items equal to 20. Now if you just get rid of this itemCount property, you'll have an

@@ -65,7 +65,7 @@ class MyListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 20,
+      // itemCount: 20,
       itemBuilder: (_, index) {
         debugPrint(
             "Building item $index ${Colors.primaries[randomNum.nextInt(Colors.primaries.length)]}");
@@ -81,7 +81,7 @@ class MyListView extends StatelessWidget {
               leading: CircleAvatar(
                 backgroundImage: AssetImage(actions[index % 5].image),
               ),
-              title: Text(actions[index % 5].title),
+              title: Text("${actions[index % 5].title}: $index"),
               subtitle: Text(actions[index % 5].subtitle),
               trailing: const Icon(Icons.keyboard_arrow_right),
               onTap: () {
