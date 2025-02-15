@@ -40,22 +40,42 @@ class MySwipeList extends StatefulWidget {
 
 class MyListView extends State<MySwipeList> {
   List<Product> products = [
-    Product(image: 'images/profile.jpg', title: 'My Profile'),
+    Product(image: 'images/heels.jpg', title: 'Heels'),
     Product(
-      image: 'images/orders.jpg',
-      title: 'Past Orders',
+      image: 'images/heels1.jpg',
+      title: 'Heels 1',
     ),
     Product(
-      image: 'images/settings.jpg',
-      title: 'Account settings',
+      image: 'images/heels2.jpg',
+      title: 'Heels 2',
     ),
     Product(
-      image: 'images/about.jpg',
-      title: 'About',
+      image: 'images/heels3.jpg',
+      title: 'Heels',
     ),
     Product(
-      image: 'images/share.jpg',
-      title: 'Share',
+      image: 'images/heels4.jpg',
+      title: 'Heels 4',
+    ),
+    Product(
+      image: 'images/heels5.jpg',
+      title: 'Heels 5',
+    ),
+    Product(
+      image: 'images/heels6.jpg',
+      title: 'Heels 6',
+    ),
+    Product(
+      image: 'images/heels7.jpg',
+      title: 'Heels 7',
+    ),
+    Product(
+      image: 'images/heels8.jpg',
+      title: 'Heels 8',
+    ),
+    Product(
+      image: 'images/heels9.jpg',
+      title: 'Heels 9',
     ),
   ];
 

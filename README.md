@@ -258,7 +258,4 @@ something that you can play around with.
 
 I have an image and then the title for each list item. I'm now going to select one of these cards at
 random and swipe from the right to the left. And when I do that you can see that the background of
-the Dismissible is shown. This is the background that we had defined on lines 62 through 69 in our
-code. You can see the little delete icon off to the very right. This has gotten rid of that product
-from our list view. Let's try this once again with a couple of more products. You simply swipe to
-the right and that particular item will get dismissed.
+the Dismissible is shown.
