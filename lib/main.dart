@@ -1,42 +1,15 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MyStore());
 }
 
-class Action {
+class Product {
   final String image;
   final String title;
-  final String subtitle;
 
-  Action({required this.image, required this.title, required this.subtitle});
-
-  @override
-  String toString() {
-    return "$title ($subtitle)";
-  }
+  Product({required this.image, required this.title});
 }
-
-List<Action> actions = [
-  Action(
-      image: 'images/profile.jpg',
-      title: 'My Profile',
-      subtitle: 'Edit your profile'),
-  Action(
-      image: 'images/orders.jpg',
-      title: 'Past Orders',
-      subtitle: 'View your past orders'),
-  Action(
-      image: 'images/settings.jpg',
-      title: 'Account settings',
-      subtitle: 'Edit your account settings'),
-  Action(image: 'images/about.jpg', title: 'About', subtitle: 'Learn about us'),
-  Action(
-      image: 'images/share.jpg',
-      title: 'Share',
-      subtitle: 'Like us? Share us!'),
-];
 
 class MyStore extends StatelessWidget {
   const MyStore({super.key});
@@ -46,49 +19,94 @@ class MyStore extends StatelessWidget {
     return MaterialApp(
       title: "Insta Store",
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.pinkAccent,
-          title: const Text("Insta Store"),
-        ),
-        body: MyListView(),
-        backgroundColor: Colors.lightGreenAccent,
-      ),
+          backgroundColor: Colors.green[100],
+          appBar: AppBar(
+            backgroundColor: Colors.blueGrey,
+            title: const Text("Insta Store"),
+          ),
+          body: const MySwipeList()),
     );
   }
 }
 
-class MyListView extends StatelessWidget {
-  MyListView({super.key});
+class MySwipeList extends StatefulWidget {
+  const MySwipeList({super.key});
 
-  final randomNum = Random();
+  @override
+  State<StatefulWidget> createState() {
+    return MyListView();
+  }
+}
+
+class MyListView extends State<MySwipeList> {
+  List<Product> products = [
+    Product(image: 'images/profile.jpg', title: 'My Profile'),
+    Product(
+      image: 'images/orders.jpg',
+      title: 'Past Orders',
+    ),
+    Product(
+      image: 'images/settings.jpg',
+      title: 'Account settings',
+    ),
+    Product(
+      image: 'images/about.jpg',
+      title: 'About',
+    ),
+    Product(
+      image: 'images/share.jpg',
+      title: 'Share',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      // itemCount: 20,
-      itemBuilder: (_, index) {
-        debugPrint(
-            "Building item $index ${Colors.primaries[randomNum.nextInt(Colors.primaries.length)]}");
-        return Card(
-          elevation: 5.0,
-          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          color: Colors.primaries[randomNum.nextInt(Colors.primaries.length)]
-              [randomNum.nextInt(9) + 100],
-          child: Container(
-            padding: const EdgeInsets.all(30),
-            alignment: Alignment.center,
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(actions[index % 5].image),
-              ),
-              title: Text("${actions[index % 5].title}: $index"),
-              subtitle: Text(actions[index % 5].subtitle),
-              trailing: const Icon(Icons.keyboard_arrow_right),
-              onTap: () {
-                debugPrint("Tapped on ${actions[index % 5]} item $index");
-              },
-            ),
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        return Dismissible(
+          key: Key(products[index].title),
+          background: Container(
+            alignment: AlignmentDirectional.centerEnd,
+            color: Colors.red,
+            child: const Icon(Icons.delete, color: Colors.white),
           ),
+          onDismissed: (direction) {
+            setState(() {
+              products.removeAt(index);
+            });
+          },
+          direction: DismissDirection.endToStart,
+          child: Card(
+              elevation: 5.0,
+              color: Colors.cyan[100],
+              child: SizedBox(
+                  height: 100,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage(products[index].image),
+                        )),
+                      ),
+                      const SizedBox(
+                        width: 24,
+                      ),
+                      Container(
+                        child: Text(
+                          products[index].title,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    ],
+                  ))),
         );
       },
     );

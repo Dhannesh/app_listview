@@ -224,4 +224,41 @@ list. You can see that as you scroll on the list, more items will get added to t
 no end. I can see up to Item 144 right now, but I can go on. This will just keep getting
 incremented.
 
-## Using a Dismissible Widget to Delete List Items
+## Using a Dismissible Widget to Delete List Items (Swipe left or right)
+
+In this stateful list view, we'll display a list of products and a swipe from the right to left will
+delete a particular product from that list. This stateful list view you will display a list of
+products. Every Product is represented using the
+Product class and every Product has an image and a corresponding title. The Product class is
+defined. you can see that the class MyListView extends the State base class. Every Product object in
+this list contains a reference to an image asset in our project and our corresponding title. This
+list of products that is to be displayed within the List view is what
+comprises the state of this widget. Any change to this list of products will update the state and
+redraw this widget. We'll create the ListView containing these products as items within the build
+method. I use the ListView.builder constructor. I've set the itemCount to be the number of products
+that we have, products.length.
+
+The itemBuilder callback is what we use to create the individual items to populate the list. A
+Dismissible widget is one that can be dismissed by dragging the widget in the indicated direction.
+Dragging or flinging this widget invokes the onDismissed handler. These Dismissible widgets make up
+the elements of our list view. Now, when we dismiss a widget, we need a way that the Flutter
+framework can identify what widget was dismissed and that's why we need to specify a key for every
+Dismissible widget. Every Dismissible widget has to be unique within the list, so that, the Flutter
+framework can clearly identify which is the widget that we're dismissing by flinging it away. So,
+that's something to keep in mind. Here all of my product titles are unique values, unique strings,
+background is just a container that has the red color and an Icon to represent that this
+particular widget is being deleted. That Icon is in white color. Whenever I swipe away a widget,
+this is the handler that will be invoked. This is what I use to update the current state of my list
+view. I essentially remove the product at the current index. The direction property indicates in
+which direction this Dismissible widget should be swiped in order to actually dismiss it. endToStart
+indicates that the swipe should be from the right towards the left. Embedded within every
+Dismissible widget is a Card that represents a product. Now, I won't go into the details of a Card
+structure here. Setting up these Cards with the right look and feel is something that you know and
+something that you can play around with.
+
+I have an image and then the title for each list item. I'm now going to select one of these cards at
+random and swipe from the right to the left. And when I do that you can see that the background of
+the Dismissible is shown. This is the background that we had defined on lines 62 through 69 in our
+code. You can see the little delete icon off to the very right. This has gotten rid of that product
+from our list view. Let's try this once again with a couple of more products. You simply swipe to
+the right and that particular item will get dismissed.
